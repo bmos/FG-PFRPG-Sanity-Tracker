@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="3.3.7" release="3">
+	<properties>
+		<name>Sanity Tracker</name>
+		<version>1.0.0</version>
+		<author>bmos (Wil Thieme)</author>
+		<description>This FantasyGrounds extension helps track sanity effects as described in Paizo's Horror Adventures rulebook.</description>
+		<ruleset>
+			<name>PFRPG</name>
+		</ruleset>
+		<ruleset>
+			<name>3.5e</name>
+		</ruleset>
+	</properties>
+
+	<announcement text="PFRPG Sanity Tracker: This extension helps automatically calculate and track sanity effects. https://github.com/bmos/PFRPG-Sanity-Tracker"  icon="SanityLogo" font="emotefont" />
+
+	<base>
+		<!-- Graphics -->
+	    <icon name="SanityLogo" file="graphics/brain_logo.png" />
+		<!-- Campaign Records -->
+		<includefile source="campaign/record_char.xml" />
+		<!-- Strings -->
+		<includefile source="strings/strings_sanity_tracker.xml" />
+		<!-- Scripts -->
+		<!-- <script name="SanityTracker" file="scripts/sanity_tracker.lua" /> -->
+	</base>
+</root>
