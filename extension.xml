@@ -13,7 +13,7 @@
 		</ruleset>
 	</properties>
 
-	<announcement text="PFRPG Sanity Tracker: This extension helps automatically calculate and track sanity effects. https://github.com/bmos/PFRPG-Sanity-Tracker"  icon="SanityLogo" font="emotefont" />
+	<announcement text="PFRPG Sanity Tracker: This extension helps calculate and track sanity effects. https://github.com/bmos/PFRPG-Sanity-Tracker"  icon="SanityLogo" font="emotefont" />
 
 	<base>
 		<!-- Graphics -->
