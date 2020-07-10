@@ -27,6 +27,6 @@
 		<!-- Strings -->
 		<includefile source="strings/strings_sanity_tracker.xml" />
 		<!-- Scripts -->
-		<!-- <script name="SanityTracker" file="scripts/sanity_tracker.lua" /> -->
+		<script name="SanityTracker" file="scripts/sanity_tracker.lua" />
 	</base>
 </root>
