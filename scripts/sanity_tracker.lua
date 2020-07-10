@@ -9,40 +9,41 @@ function onInit()
 		DB.addHandler(DB.getPath('charsheet.*.abilities.intelligence'), 'onChildUpdate', updateSanityScore)
 		DB.addHandler(DB.getPath('combattracker.list.*.effects.*.label'), 'onUpdate', updateSanityScore)
 		DB.addHandler(DB.getPath('combattracker.list.*.effects.*.isactive'), 'onUpdate', updateSanityScore)
+--		DB.addHandler(DB.getPath('combattracker.list.*.effects'), 'onChildDeleted', updateSanityScore)
 	end
 end
 
----	Return a consistent value for nodePC and rActor.
+---	Return a consistent value for nodeChar and rActor.
 --	This is accomplished by parsing node for a number of expected relationships.
 --	@param node The databasenode to be queried for relationships.
---	@return nodePC This is the charsheet databasenode of the player character
+--	@return nodeChar This is the charsheet databasenode of the player character
 --	@return rActor This is a table containing database paths and identifying data about the player character
 local function handleArgs(node)
-	local nodePC
+	local nodeChar
 	local rActor
 
-	if node.getChild('...').getName() == 'charisma' then
-		nodePC = node.getChild('....')
-	elseif node.getChild('...').getName() == 'wisdom' then
-		nodePC = node.getChild('....')
-	elseif node.getChild('...').getName() == 'intelligence' then
-		nodePC = node.getChild('....')
+	if node.getName() == 'charisma' then
+		nodeChar = node.getChild('...')
+	elseif node.getName() == 'wisdom' then
+		nodeChar = node.getChild('...')
+	elseif node.getName() == 'intelligence' then
+		nodeChar = node.getChild('...')
 	elseif node.getChild('...').getName() == 'effects' then
 		rActor = ActorManager.getActor('ct', node.getChild('....'))
-		nodePC = DB.findNode(rActor['sCreatureNode'])
+		nodeChar = DB.findNode(rActor['sCreatureNode'])
 	end
 
 	if not rActor then
-		rActor = ActorManager.getActor("pc", nodePC)
+		rActor = ActorManager.getActor("pc", nodeChar)
 	end
 
-	return nodePC, rActor
+	return nodeChar, rActor
 end
 
 ---	Calculate total sanity score and write that value to the character's database node
 --	@param node the initiating databasenode
 function updateSanityScore(node)
-	nodeChar, rActor = handleArgs(node)
+	local nodeChar, rActor = handleArgs(node)
 
 	Debug.chat(nodeChar, rActor)
 end
