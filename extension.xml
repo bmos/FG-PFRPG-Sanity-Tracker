@@ -18,6 +18,8 @@
 	<base>
 		<!-- Graphics -->
 	    <icon name="SanityLogo" file="graphics/brain_logo.png" />
+	    <icon name="button_sanity" file="graphics/button_sanity.png" />
+	    <icon name="button_sanity_down" file="graphics/button_sanity_down.png" />
 		<!-- Campaign Records -->
 		<includefile source="campaign/record_char.xml" />
 		<!-- Strings -->
