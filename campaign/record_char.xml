@@ -50,6 +50,67 @@
 				<prefix>char_sanity_title</prefix>
 			</windowtitlebar_char>
 			<anchor_title_charsheethelper name="contentanchor" />
+
+			<frame_char name="sanityframe">
+				<anchored to="contentanchor" height="60">
+					<top anchor="bottom" relation="relative" offset="0" />
+					<left />
+					<right />
+				</anchored>
+			</frame_char>
+		
+			<basicnumber name="sanityscore" source="sanity.score">
+				<anchored to="sanityframe" width="45" height="20">
+					<top offset="25" />
+					<right anchor="center" offset="-63" />
+				</anchored>
+				<readonly />
+				<min>0</min>
+			</basicnumber>
+			<label_fieldtop>
+				<anchored to="sanityscore" />
+				<static textres="char_label_sanityscore" />
+			</label_fieldtop>
+		
+			<basicnumber name="sanitythreshold" source="sanity.threshold">
+				<anchored to="sanityscore" width="45" height="20">
+					<top offset="0" />
+					<left anchor="center" offset="35" />
+				</anchored>
+				<readonly />
+				<min>0</min>
+			</basicnumber>
+			<label_fieldtop>
+				<anchored to="sanitythreshold" />
+				<static textres="char_label_sanitythreshold" />
+			</label_fieldtop>
+		
+			<basicnumber name="sanityedge" source="sanity.edge">
+				<anchored to="sanitythreshold" width="45" height="20">
+					<top offset="0" />
+					<left anchor="center" offset="35" />
+				</anchored>
+				<readonly />
+				<min>0</min>
+			</basicnumber>
+			<label_fieldtop>
+				<anchored to="sanityedge" />
+				<static textres="char_label_sanityedge" />
+			</label_fieldtop>
+		
+			<basicnumber name="sanitydamage" source="sanity.damage">
+				<anchored to="sanityedge" width="45" height="20">
+					<top offset="0" />
+					<left anchor="center" offset="35" />
+				</anchored>
+				<min>0</min>
+				<default>0</default>
+			</basicnumber>
+			<label_fieldtop>
+				<anchored to="sanitydamage" />
+				<static textres="char_label_sanitydamage" />
+			</label_fieldtop>
+		
 			<close_charsheethelper />
 			<resize_charsheethelper />
 		</sheetdata>
