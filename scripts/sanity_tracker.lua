@@ -9,7 +9,7 @@ function onInit()
 		DB.addHandler(DB.getPath('charsheet.*.abilities.intelligence'), 'onChildUpdate', updateSanityScore)
 		DB.addHandler(DB.getPath('combattracker.list.*.effects.*.label'), 'onUpdate', updateSanityScore)
 		DB.addHandler(DB.getPath('combattracker.list.*.effects.*.isactive'), 'onUpdate', updateSanityScore)
---		DB.addHandler(DB.getPath('combattracker.list.*.effects'), 'onChildDeleted', updateSanityScore)
+		DB.addHandler(DB.getPath('combattracker.list.*.effects'), 'onChildDeleted', updateSanityScore)
 	end
 end
 
@@ -28,6 +28,8 @@ local function handleArgs(node)
 		nodeChar = node.getChild('...')
 	elseif node.getName() == 'intelligence' then
 		nodeChar = node.getChild('...')
+	elseif node.getName() == 'effects' then
+		nodeChar = node.getParent()
 	elseif node.getChild('...').getName() == 'effects' then
 		rActor = ActorManager.getActor('ct', node.getChild('....'))
 		nodeChar = DB.findNode(rActor['sCreatureNode'])
