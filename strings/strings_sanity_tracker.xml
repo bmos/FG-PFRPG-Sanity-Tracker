@@ -7,7 +7,11 @@
 
 <root>
 	<!-- Labels -->
-
+	<string name="char_sanity_title">Sanity</string>
+	<string name="char_label_sanitydamage">Damage</string>
+	<string name="char_label_sanityscore">Score</string>
+	<string name="char_label_sanitythreshhold">Threshold</string>
+	<string name="char_label_sanityedge">Edge</string>
 	<!-- Tooltips -->
 
 </root>
