@@ -5,8 +5,8 @@
 <root>
 	<!-- Labels -->
 	<string name="char_sanity_title">Sanity</string>
-	<string name="char_label_sanitydamage">Damage</string>
 	<string name="char_label_sanityscore">Score</string>
 	<string name="char_label_sanitythreshold">Threshold</string>
 	<string name="char_label_sanityedge">Edge</string>
+	<string name="char_label_sanitydamage">Damage</string>
 </root>
