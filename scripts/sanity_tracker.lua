@@ -42,10 +42,41 @@ local function handleArgs(node)
 	return nodeChar, rActor
 end
 
+---	Calculate the sums of all values in a table
+--	@param t A table containing numbers
+--	@return nSum The sum of all values in table t
+function tableSum(t)
+	local nSum = 0
+
+	for _,v in pairs(t) do
+		nSum = nSum + v
+	end
+
+	return nSum
+end
+
 ---	Calculate total sanity score and write that value to the character's database node
 --	@param node the initiating databasenode
 function updateSanityScore(node)
 	local nodeChar, rActor = handleArgs(node)
 
-	Debug.chat(nodeChar, rActor)
+	local tMentalScores = {}
+
+	tMentalScores['cha'] = DB.getValue(nodeChar, 'abilities.charisma.score', nil)
+	tMentalScores['wis'] = DB.getValue(nodeChar, 'abilities.wisdom.score', nil)
+	tMentalScores['int'] = DB.getValue(nodeChar, 'abilities.intelligence.score', nil)
+
+	tMentalScores['cha_effect'] = EffectManagerST.getEffectsBonus(rActor, 'CHA', true)
+	tMentalScores['wis_effect'] = EffectManagerST.getEffectsBonus(rActor, 'WIS', true)
+	tMentalScores['int_effect'] = EffectManagerST.getEffectsBonus(rActor, 'INT', true)
+
+	tMentalScores['cha_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.charisma.damage', nil)
+	tMentalScores['wis_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.wisdom.damage', nil)
+	tMentalScores['int_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.intelligence.damage', nil)
+
+	local nSanityScore = tableSum(tMentalScores)
+	local nSanityEdge = (nSanityScore / 2) - (nSanityScore / 2) % 1
+
+	DB.setValue(nodeChar, 'sanity.score', 'number', nSanityScore)
+	DB.setValue(nodeChar, 'sanity.edge', 'number', nSanityEdge)
 end
