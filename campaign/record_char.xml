@@ -15,6 +15,7 @@
 				<script>
 					function onButtonPress()
 						Interface.openWindow('charsheet_sanity', window.getDatabaseNode())
+						SanityTracker.updateSanityScore(window.getDatabaseNode())
 					end
 				</script>
 			</buttoncontrol>
@@ -69,21 +70,8 @@
 				<static textres="char_label_sanityscore" />
 			</label_fieldtop>
 		
-			<basicnumber name="sanitythreshold" source="sanity.threshold">
-				<anchored to="sanityscore" width="45" height="20">
-					<top offset="0" />
-					<left anchor="center" offset="35" />
-				</anchored>
-				<readonly />
-				<min>0</min>
-			</basicnumber>
-			<label_fieldtop>
-				<anchored to="sanitythreshold" />
-				<static textres="char_label_sanitythreshold" />
-			</label_fieldtop>
-		
 			<basicnumber name="sanityedge" source="sanity.edge">
-				<anchored to="sanitythreshold" width="45" height="20">
+				<anchored to="sanityscore" width="45" height="20">
 					<top offset="0" />
 					<left anchor="center" offset="35" />
 				</anchored>
@@ -112,8 +100,21 @@
 				<static textres="char_label_sanityedge" />
 			</label_fieldtop>
 		
-			<basicnumber name="sanitydamage" source="sanity.damage">
+			<basicnumber name="sanitythreshold" source="sanity.threshold">
 				<anchored to="sanityedge" width="45" height="20">
+					<top offset="0" />
+					<left anchor="center" offset="35" />
+				</anchored>
+				<readonly />
+				<min>0</min>
+			</basicnumber>
+			<label_fieldtop>
+				<anchored to="sanitythreshold" />
+				<static textres="char_label_sanitythreshold" />
+			</label_fieldtop>
+		
+			<basicnumber name="sanitydamage" source="sanity.damage">
+				<anchored to="sanitythreshold" width="45" height="20">
 					<top offset="0" />
 					<left anchor="center" offset="35" />
 				</anchored>
