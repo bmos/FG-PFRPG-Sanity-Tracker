@@ -13,9 +13,12 @@
 				<bounds>-41,42,23,22</bounds>
 				<icon normal="button_sanity" pressed="button_sanity_down" />
 				<script>
+					function onInit()
+						SanityTracker.updateSanityScore(window.getDatabaseNode())
+					end
+
 					function onButtonPress()
 						Interface.openWindow('charsheet_sanity', window.getDatabaseNode())
-						SanityTracker.updateSanityScore(window.getDatabaseNode())
 					end
 				</script>
 			</buttoncontrol>
@@ -85,7 +88,7 @@
 						local nSanityDamage = DB.getValue(nodeSanity, 'damage', 0)
 						local nSanityEdge = DB.getValue(nodeSanity, 'edge', 0)
 
-						if nSanityDamage >= nSanityEdge then
+						if nSanityDamage ~= 0 and nSanityDamage >= nSanityEdge then
 							window.sanitydamage.setColor('FFB22929')
 						else
 							window.sanitydamage.setColor('FF000000')
