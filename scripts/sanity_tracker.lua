@@ -62,21 +62,30 @@ function updateSanityScore(node)
 
 	local tMentalScores = {}
 
-	tMentalScores['cha'] = DB.getValue(nodeChar, 'abilities.charisma.score', nil)
-	tMentalScores['wis'] = DB.getValue(nodeChar, 'abilities.wisdom.score', nil)
-	tMentalScores['int'] = DB.getValue(nodeChar, 'abilities.intelligence.score', nil)
+	tMentalScores['cha'] = DB.getValue(nodeChar, 'abilities.charisma.score', 0)
+	tMentalScores['wis'] = DB.getValue(nodeChar, 'abilities.wisdom.score', 0)
+	tMentalScores['int'] = DB.getValue(nodeChar, 'abilities.intelligence.score', 0)
 
 	tMentalScores['cha_effect'] = EffectManagerST.getEffectsBonus(rActor, 'CHA', true)
 	tMentalScores['wis_effect'] = EffectManagerST.getEffectsBonus(rActor, 'WIS', true)
 	tMentalScores['int_effect'] = EffectManagerST.getEffectsBonus(rActor, 'INT', true)
 
-	tMentalScores['cha_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.charisma.damage', nil)
-	tMentalScores['wis_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.wisdom.damage', nil)
-	tMentalScores['int_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.intelligence.damage', nil)
+	tMentalScores['cha_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.charisma.damage', 0)
+	tMentalScores['wis_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.wisdom.damage', 0)
+	tMentalScores['int_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.intelligence.damage', 0)
 
 	local nSanityScore = tableSum(tMentalScores)
 	local nSanityEdge = (nSanityScore / 2) - (nSanityScore / 2) % 1
 
+	local tThreshold = {}
+	tThreshold['cha'] = tMentalScores.cha + tMentalScores.cha_effect + tMentalScores.cha_dmg
+	tThreshold['wis'] = tMentalScores.wis + tMentalScores.wis_effect + tMentalScores.wis_dmg
+	tThreshold['int'] = tMentalScores.int + tMentalScores.int_effect + tMentalScores.int_dmg
+
+	local nHighestMentalStat = math.max(tThreshold.cha, tThreshold.wis, tThreshold.int)
+	local nSanityThreshold = (nHighestMentalStat - 10 ) / 2
+
 	DB.setValue(nodeChar, 'sanity.score', 'number', nSanityScore)
 	DB.setValue(nodeChar, 'sanity.edge', 'number', nSanityEdge)
+	DB.setValue(nodeChar, 'sanity.threshold', 'number', nSanityThreshold - nSanityThreshold % 1)
 end
