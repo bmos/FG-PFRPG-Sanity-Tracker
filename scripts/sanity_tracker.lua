@@ -36,7 +36,7 @@ local function handleArgs(node)
 	end
 
 	if not rActor then
-		rActor = ActorManager.getActor("pc", nodeChar)
+		rActor = ActorManager.getActor('pc', nodeChar)
 	end
 
 	return nodeChar, rActor

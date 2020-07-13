@@ -16,7 +16,7 @@
 					function onInit()
 						SanityTracker.updateSanityScore(window.getDatabaseNode())
 					end
-
+				
 					function onButtonPress()
 						Interface.openWindow('charsheet_sanity', window.getDatabaseNode())
 					end
@@ -38,10 +38,11 @@
 	<windowclass name="charsheet_sanity">
 		<frame>charsheethelper</frame>
 		<placement>
-			<size width="300" height="150" />
+			<size width="300" height="135" />
 		</placement>
 		<sizelimits>
-			<minimum width="300" height="150" />
+			<minimum width="300" height="135" />
+			<maximum width="300" height="135" />
 			<dynamic />
 		</sizelimits>
 		<nodelete />
@@ -146,6 +147,46 @@
 				<static textres="char_label_sanitydamage" />
 			</label_fieldtop>
 		
+			<close_charsheethelper />
+			<resize_charsheethelper />
+		</sheetdata>
+	</windowclass>
+	<windowclass name="charsheet_egg">
+		<frame>charsheethelper</frame>
+		<placement>
+			<size width="425" height="120" />
+		</placement>
+		<sizelimits>
+			<minimum width="425" height="120" />
+			<maximum width="425" height="120" />
+			<dynamic />
+		</sizelimits>
+		<nodelete />
+		<playercontrol />
+		<sheetdata>
+			<windowtitlebar_char name="title">
+				<prefix>char_sanity_title</prefix>
+			</windowtitlebar_char>
+			<anchor_title_charsheethelper name="contentanchor" />
+
+			<frame_char name="eggframe">
+				<anchored to="contentanchor" height="55">
+					<top anchor="bottom" relation="relative" offset="0" />
+					<left />
+					<right />
+				</anchored>
+			</frame_char>
+
+			<stringu name="egg" source="sanity.egg">
+				<anchored to="eggframe">
+					<top offset="20" />
+					<left offset="20" />
+					<right offset="20" />
+				</anchored>
+				<readonly />
+				<nodrag />
+			</stringu>
+			
 			<close_charsheethelper />
 			<resize_charsheethelper />
 		</sheetdata>
