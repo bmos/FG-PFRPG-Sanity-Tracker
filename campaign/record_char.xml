@@ -159,30 +159,69 @@
 			</label_fieldtop>
 
 			<frame_char name="madnessframe">
-				<bounds>15,100,-15,-15</bounds>
+				<anchored position="insidetopleft" offset="15,100">
+					<right anchor="right" offset="-15" />
+					<bottom anchor="bottom" offset="-15" />
+				</anchored>
 			</frame_char>
 			<label_frametop>
 				<anchored to="madnessframe" />
 				<static textres="char_madness_title" />
 			</label_frametop>
-			<stringu name="madnesses" source="sanity.madness">
+			<list_charabilities name="madnesses">
 				<anchored to="madnessframe">
 					<top offset="30" />
 					<left offset="15" />
 					<right offset="-20" />
 					<bottom offset="-15" />
 				</anchored>
-				<multilinespacing>20</multilinespacing>
-			</stringu>
+				<datasource>.madnesses</datasource>
+				<class>char_sanity_madnesses</class>
+			</list_charabilities>
 			<scrollbar>
 				<anchored to="madnesses" />
 				<target>madnesses</target>
 			</scrollbar>
+			<button_iedit name="madnesses_iedit">
+				<anchored to="madnesses" position="aboveright" offset="5,0" />
+				<target>madnesses</target>
+			</button_iedit>
+			<button_iadd name="madnesses_iadd">
+				<anchored to="madnesses" position="aboveleft" offset="5,0" />
+				<target>madnesses</target>
+			</button_iadd>
 		
 			<close_charsheethelper />
 			<resize_charsheethelper />
 		</sheetdata>
 	</windowclass>
+
+	<windowclass name="char_sanity_madnesses">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<genericcontrol name="rightanchor">
+				<anchored height="0" width="0">
+					<top />
+					<right />
+				</anchored>
+			</genericcontrol>
+			<button_idelete name="idelete">
+				<anchored>
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_idelete>
+			<string_textlistitem name="name">
+				<anchored>
+					<top offset="2" />
+					<left offset="5" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</string_textlistitem>
+		</sheetdata>
+	</windowclass>
+
 	<windowclass name="charsheet_egg">
 		<frame>charsheethelper</frame>
 		<placement>
