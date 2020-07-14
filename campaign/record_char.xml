@@ -20,6 +20,17 @@
 					function onButtonPress()
 						Interface.openWindow('charsheet_sanity', window.getDatabaseNode())
 					end
+				
+					function onClickRelease(button, x, y)
+						local bFirstClick = DB.getValue(window.getDatabaseNode(), 'sanity.egglock', 1)
+					
+						if button == 2 and bFirstClick == 1 then
+							Interface.openWindow('charsheet_egg', window.getDatabaseNode())
+							DB.setValue(window.getDatabaseNode(), 'sanity.egglock', 'number', 0)
+						elseif bFirstClick == 0 then
+							DB.setValue(window.getDatabaseNode(), 'sanity.egg', 'string', '')
+						end
+					end
 				</script>
 			</buttoncontrol>
 
@@ -41,8 +52,8 @@
 			<size width="300" height="135" />
 		</placement>
 		<sizelimits>
-			<minimum width="300" height="135" />
-			<maximum width="300" height="135" />
+			<minimum width="300" height="200" />
+			<maximum width="300" height="650" />
 			<dynamic />
 		</sizelimits>
 		<nodelete />
@@ -146,6 +157,27 @@
 				<anchored to="sanitydamage" />
 				<static textres="char_label_sanitydamage" />
 			</label_fieldtop>
+
+			<frame_char name="madnessframe">
+				<bounds>15,100,-15,-15</bounds>
+			</frame_char>
+			<label_frametop>
+				<anchored to="madnessframe" />
+				<static textres="char_madness_title" />
+			</label_frametop>
+			<stringu name="madnesses" source="sanity.madness">
+				<anchored to="madnessframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<scrollbar>
+				<anchored to="madnesses" />
+				<target>madnesses</target>
+			</scrollbar>
 		
 			<close_charsheethelper />
 			<resize_charsheethelper />
@@ -183,6 +215,7 @@
 					<left offset="20" />
 					<right offset="20" />
 				</anchored>
+				<default>Are you feeling alright? I hope so, because there's a lot to come.</default>
 				<readonly />
 				<nodrag />
 			</stringu>
