@@ -3,6 +3,7 @@ Inspired by a request, here is an extension I have made to help track character 
 
 # Compatibility and Instructions
 This extension has been fully tested with FantasyGrounds Classic 3.3.10 and FantasyGrounds Unity 4.0.0 (2020-07-07)
+
 In the upper right of the character sheet (under the chat bubble) there will be a brain button. This will bring up that character's sanity tracker.
 
 # Features
