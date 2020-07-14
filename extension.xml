@@ -23,6 +23,7 @@
 	    <icon name="button_sanity_down" file="graphics/button_sanity_down.png" />
 		<!-- Campaign Records -->
 		<includefile source="campaign/record_char.xml" />
+		<includefile source="campaign/record_madness.xml" />
 		<!-- Strings -->
 		<includefile source="strings/strings_sanity_tracker.xml" />
 		<!-- Scripts -->
