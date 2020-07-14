@@ -8,7 +8,7 @@
 			<button_charactivate name="speak">
 				<bounds>-41,25,23,22</bounds>
 			</button_charactivate>
-
+		
 			<buttoncontrol name="button_sanity">
 				<bounds>-41,42,23,22</bounds>
 				<icon normal="button_sanity" pressed="button_sanity_down" />
@@ -16,11 +16,11 @@
 					function onInit()
 						SanityTracker.updateSanityScore(window.getDatabaseNode())
 					end
-				
+					
 					function onButtonPress()
 						Interface.openWindow('charsheet_sanity', window.getDatabaseNode())
 					end
-				
+					
 					function onClickRelease(button, x, y)
 						local bFirstClick = DB.getValue(window.getDatabaseNode(), 'sanity.egglock', 1)
 					
@@ -33,14 +33,14 @@
 					end
 				</script>
 			</buttoncontrol>
-
+		
 			<string_labeled name="name">
 				<anchored to="overviewframe" position="insidetopleft" offset="15,10" height="20">
 					<right offset="-15" />
 				</anchored>
 				<labelres>char_label_name</labelres>
 			</string_labeled>
-
+		
 			<resize_charsheet />
 			<close_charsheet />
 		</sheetdata>
@@ -63,7 +63,7 @@
 				<prefix>char_sanity_title</prefix>
 			</windowtitlebar_char>
 			<anchor_title_charsheethelper name="contentanchor" />
-
+		
 			<frame_char name="sanityframe">
 				<anchored to="contentanchor" height="60">
 					<top anchor="bottom" relation="relative" offset="0" />
@@ -157,7 +157,7 @@
 				<anchored to="sanitydamage" />
 				<static textres="char_label_sanitydamage" />
 			</label_fieldtop>
-
+		
 			<frame_char name="madnessframe">
 				<anchored position="insidetopleft" offset="15,100">
 					<right anchor="right" offset="-15" />
@@ -228,76 +228,6 @@
 				</anchored>
 				<multilinespacing>20</multilinespacing>
 			</string_textlistitem>
-		</sheetdata>
-	</windowclass>
-
-	<windowclass name="referencemadness">
-		<frame>recordsheet</frame>
-		<placement>
-			<size width="350" height="350" />
-		</placement>
-		<sizelimits>
-			<minimum width="300" height="300" />
-			<dynamic />
-		</sizelimits>
-		<minimize>minimized_reference</minimize>
-		<tooltip field="name" />
-		<script>
-			function onLockChanged()
-				if header.subwindow then
-					header.subwindow.update();
-				end
-				
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				text.setReadOnly(bReadOnly);
-			end
-		</script>
-		<sheetdata>
-			<sub_record_header name="header">
-				<class>ref_madness_header</class>
-			</sub_record_header>
-
-			<frame_record_content />
-			<ft_record name="text">
-				<anchored to="contentframe" position="over" />
-				<footer>footer_wide</footer>
-			</ft_record>
-			<scrollbar>
-				<anchored to="text" />
-				<target>text</target>
-			</scrollbar>
-			
-			<resize_recordsheet />
-			<close_recordsheet />
-		</sheetdata>
-	</windowclass>
-
-	<windowclass name="ref_madness_header">
-		<margins control="0,0,0,2" />
-		<script>
-			function onInit()
-				update();
-			end
-			function update()
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				name.setReadOnly(bReadOnly);
-			end
-		</script>
-		<sheetdata>
-			<link_record_header>
-				<class>referencemadness</class>
-			</link_record_header>
-
-			<anchor_record_header_right />
-			<icon_record_locked />
-			<button_record_locked />
-
-			<string_record_name name="name">
-				<empty textres="library_recordtype_empty_madness" />
-			</string_record_name>
-			<label_recordtype name="recordtype">
-				<static textres="record_label_madness" />
-			</label_recordtype>	
 		</sheetdata>
 	</windowclass>
 
