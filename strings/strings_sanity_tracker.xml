@@ -5,13 +5,13 @@
 <root>
 	<!-- Labels -->
 	<string name="char_sanity_title">Sanity</string>
-	<string name="char_madness_title">Madnesses</string>
-
 	<string name="char_label_sanityscore">Score</string>
 	<string name="char_label_sanitythreshold">Threshold</string>
 	<string name="char_label_sanityedge">Edge</string>
 	<string name="char_label_sanitydamage">Damage</string>
 
+	<string name="char_madness_title">Madnesses</string>
 	<string name="record_label_madness">Madness</string>
-	<string name="madness_type_label">Madness Type</string>
+	<string name="madness_type_lesser">Lesser Madness</string>
+	<string name="madness_type_greater">Greater Madness</string>
 </root>

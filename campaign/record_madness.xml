@@ -76,13 +76,13 @@
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode())
 				if bReadOnly then
-					type_biglabel.setValue('[' .. type.getValue() .. ']')
-					type_biglabel.setVisible(true)
+					madness_type_biglabel.setValue('[' .. madness_type.getValue() .. ']')
+					madness_type_biglabel.setVisible(true)
 					
-					type.update(bReadOnly, true)
+					madness_type.update(bReadOnly, true)
 				else
-					type_biglabel.setVisible(false)
-					type.update(bReadOnly)
+					madness_type_biglabel.setVisible(false)
+					madness_type.update(bReadOnly)
 				end
 				details.update(bReadOnly)
 			end
@@ -90,17 +90,25 @@
 		<sheetdata>
 			<anchor_column name="columnanchor" />
 			
-			<label_column name="type_biglabel">
+			<label_column name="madness_type_biglabel">
 				<anchored>
 					<top relation="relative" offset="7" />
 				</anchored>
 				<font>reference-b-large</font>
 			</label_column>
 
-			<label_column name="type_label">
-				<static textres="madness_type_label" />
-			</label_column>
-			<string_columnh name="type" />
+			<button_stringcycler name="madness_type">
+				<anchored width="105" height="20">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left parent="columnanchor" anchor="center" offset="5" />
+				</anchored>
+				<parameters>
+					<defaultlabelres>madness_type_lesser</defaultlabelres>
+					<defaultvalue>L</defaultvalue>
+					<labelsres>madness_type_greater</labelsres>
+					<values>G</values>
+				</parameters>
+			</button_stringcycler>
 			
 			<ft_columnh name="details">
 				<font>reference-r</font>
