@@ -102,10 +102,10 @@
 			</label_column>
 			<string_columnh name="type" />
 			
-			<string_columnh_full name="details">
+			<ft_columnh name="details">
 				<font>reference-r</font>
 				<empty textres="empty_madness_details" />
-			</string_columnh_full>
+			</ft_columnh>
 		</sheetdata>
 	</windowclass>
 </root>
