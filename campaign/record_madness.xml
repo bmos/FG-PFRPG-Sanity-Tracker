@@ -6,7 +6,7 @@
 	<windowclass name="referencemadness">
 		<frame>referencepage</frame>
 		<placement>
-			<size width="400" height="350" />
+			<size width="400" height="550" />
 		</placement>
 		<sizelimits>
 			<dynamic />
@@ -46,7 +46,7 @@
 		<margins control="0,0,0,7" />
 		<script>
 			function onInit()
-				update();
+				update()
 			end
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode())
@@ -71,48 +71,124 @@
 	<windowclass name="ref_madness_stats">
 		<script>
 			function onInit()
-				update();
+				update()
 			end
+			
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode())
+				
 				if bReadOnly then
-					madness_type_biglabel.setValue('[' .. madness_type.getValue() .. ']')
-					madness_type_biglabel.setVisible(true)
+					local sSubtype = ''
 					
-					madness_type.update(bReadOnly, true)
+					if subtype.getValue() and subtype.getValue() ~= '' then
+						sSubtype = ' (' .. subtype.getValue() .. ')'
+					end
+					
+					severity_biglabel.setValue('[' .. severity_type.getValue() .. sSubtype .. ']')
+					severity_biglabel.setVisible(true)
+					severity_label.setVisible(false)
+					severity_type_label.setVisible(false)
+					severity_type.setVisible(false)
+					
+					severity_type.update(bReadOnly, true)
+					subtype.update(bReadOnly, true)
 				else
-					madness_type_biglabel.setVisible(false)
-					madness_type.update(bReadOnly)
+					severity_biglabel.setVisible(false)
+					severity_label.setVisible(true)
+					severity_type_label.setVisible(true)
+					severity_type.setVisible(true)
+				
+					severity_type.update(bReadOnly)
+					subtype.update(bReadOnly)
 				end
-				details.update(bReadOnly)
+				
+				description.update(bReadOnly)
 			end
 		</script>
 		<sheetdata>
 			<anchor_column name="columnanchor" />
 			
-			<label_column name="madness_type_biglabel">
+			<label_column name="severity_biglabel">
 				<anchored>
 					<top relation="relative" offset="7" />
 				</anchored>
 				<font>reference-b-large</font>
 			</label_column>
-
-			<button_stringcycler name="madness_type">
-				<anchored width="105" height="20">
+			
+			<header_column name="severity_label">
+				<static textres="record_madness_severity_label"/>
+				<center />
+			</header_column>
+			<label_column name="severity_type_label">
+				<static textres="record_madness_severity_type_label" />
+			</label_column>
+			<button_stringcycler name="severity_type">
+				<anchored>
 					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
-					<left parent="columnanchor" anchor="center" offset="5" />
+					<left offset="97" />
+					<right offset="-5" />
 				</anchored>
 				<parameters>
-					<defaultlabelres>madness_type_lesser</defaultlabelres>
-					<defaultvalue>L</defaultvalue>
-					<labelsres>madness_type_greater</labelsres>
-					<values>G</values>
+					<labelsres>|madness_severity_lesser|madness_severity_greater</labelsres>
+					<values>[L]|[G]</values>
 				</parameters>
 			</button_stringcycler>
+			<label_column name="subtype_label">
+				<static textres="record_madness_subtype_label" />
+			</label_column>
+			<string_columnh name="subtype" />
 			
-			<ft_columnh name="details">
-				<font>reference-r</font>
-				<empty textres="empty_madness_details" />
+			<header_column name="stats_label">
+				<static textres="record_madness_stats_label"/>
+				<center />
+			</header_column>
+			<label_column name="save_label">
+				<static textres="record_madness_save_label" />
+			</label_column>
+			<button_stringcycler name="savetype">
+				<anchored width="50">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="97" />
+				</anchored>
+				<parameters>
+					<defaultlabelres>power_label_savetypenone</defaultlabelres>
+					<labelsres>power_label_savetypefort|power_label_savetyperef|power_label_savetypewill</labelsres>
+					<values>fortitude|reflex|will</values>
+				</parameters>
+			</button_stringcycler>
+			<label name="savedclabel">
+				<anchored to="savetype" position="righthigh" offset="10,0" width="15" />
+				<static textres="dc" />
+			</label>
+			<basicnumber name="savedc">
+				<anchored height="20">
+					<top parent="savedclabel" anchor="top" relation="relative" offset="0" />
+					<left parent="savedclabel" anchor="right" offset="10" />
+					<right offset="-5" />
+				</anchored>
+				<hideonvalue value="0" />
+			</basicnumber>
+			<label_column name="onset_label">
+				<static textres="record_madness_onset_label" />
+			</label_column>
+			<string_columnh name="onset" />
+			
+			<header_column name="effect_label">
+				<static textres="record_madness_effect_label"/>
+				<center />
+			</header_column>
+			<string_columnh_full name="effect" />
+			<label_column name="dormancy_label">
+				<static textres="record_madness_dormancy_label" />
+			</label_column>
+			<string_columnh name="dormancy" />
+			
+			<header_column name="description_label">
+				<static textres="record_madness_description_label"/>
+				<center />
+			</header_column>
+			<ft_columnh name="description">
+				<empty textres="empty_madness_description" />
 			</ft_columnh>
 		</sheetdata>
 	</windowclass>

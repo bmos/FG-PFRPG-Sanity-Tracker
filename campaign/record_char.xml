@@ -199,6 +199,12 @@
 	<windowclass name="char_sanity_madnesses">
 		<margins control="0,0,0,2" />
 		<sheetdata>
+			<string_textlistitem name="severity">
+				<bounds>5,2,20,20</bounds>
+				<tabtarget next="name" />
+				<default>[-]</default>
+				<readonly />
+			</string_textlistitem>
 			<genericcontrol name="rightanchor">
 				<anchored height="0" width="0">
 					<top />
@@ -223,7 +229,7 @@
 			<string_textlistitem name="name">
 				<anchored>
 					<top offset="2" />
-					<left offset="5" />
+					<left offset="25" />
 					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
 				</anchored>
 				<multilinespacing>20</multilinespacing>
