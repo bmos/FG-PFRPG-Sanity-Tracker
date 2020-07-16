@@ -6,9 +6,10 @@
 	<windowclass name="referencemadness">
 		<frame>referencepage</frame>
 		<placement>
-			<size width="400" height="550" />
+			<size width="400" height="600" />
 		</placement>
 		<sizelimits>
+			<minimum width="400" height="400" />
 			<dynamic />
 		</sizelimits>
 		<minimize>minimized_reference</minimize>
@@ -79,9 +80,19 @@
 				
 				if bReadOnly then
 					local sSubtype = ''
+					local sSave = ''
 					
 					if subtype.getValue() and subtype.getValue() ~= '' then
 						sSubtype = ' (' .. subtype.getValue() .. ')'
+					end
+					
+					if savedc.getValue() and savedc.getValue() ~= 0 and savetype.getValue() and savetype.getValue() ~= '' then
+						sSave = 'DC ' .. savedc.getValue() .. ' '
+					end
+					if savetype.getValue() and savetype.getValue() ~= '' then
+						sSave = sSave .. savetype.getValue()
+					else
+						sSave = 'none'
 					end
 					
 					severity_biglabel.setValue('[' .. severity_type.getValue() .. sSubtype .. ']')
@@ -90,6 +101,12 @@
 					severity_type_label.setVisible(false)
 					severity_type.setVisible(false)
 					
+					save_string.setValue(sSave)
+					save_string.setVisible(true)
+					savetype.setVisible(false)
+					savedc_label.setVisible(false)
+					savedc.setVisible(false)
+					
 					severity_type.update(bReadOnly, true)
 					subtype.update(bReadOnly, true)
 				else
@@ -97,11 +114,19 @@
 					severity_label.setVisible(true)
 					severity_type_label.setVisible(true)
 					severity_type.setVisible(true)
+
+					save_string.setVisible(false)
+					savetype.setVisible(true)
+					savedc_label.setVisible(true)
+					savedc.setVisible(true)
 				
 					severity_type.update(bReadOnly)
 					subtype.update(bReadOnly)
 				end
 				
+				onset.update(bReadOnly)
+				effect.update(bReadOnly)
+				dormancy.update(bReadOnly)
 				description.update(bReadOnly)
 			end
 		</script>
@@ -129,7 +154,9 @@
 					<right offset="-5" />
 				</anchored>
 				<parameters>
-					<labelsres>|madness_severity_lesser|madness_severity_greater</labelsres>
+					<defaultlabelres>record_madness_none</defaultlabelres>
+					<labelsres>record_madness_severity_lesser|record_madness_severity_greater</labelsres>
+					<default></default>
 					<values>[L]|[G]</values>
 				</parameters>
 			</button_stringcycler>
@@ -145,10 +172,29 @@
 			<label_column name="save_label">
 				<static textres="record_madness_save_label" />
 			</label_column>
+			<string_columnh name="save_string">
+				<anchored>
+					<left />
+				</anchored>
+				<readonly />
+			</string_columnh>
+			<number_column_right name="savedc">
+				<anchored height="20" >
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+				</anchored>
+				<hideonvalue value="0" />
+			</number_column_right>
+			<label name="savedc_label">
+				<anchored height="20">
+					<top parent="stats_label" anchor="bottom" offset="7" />
+					<right parent="savedc" anchor="left" offset="-10" />
+				</anchored>
+				<static textres="dc" />
+			</label>
 			<button_stringcycler name="savetype">
 				<anchored width="50">
-					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
-					<left offset="97" />
+					<top parent="stats_label" anchor="bottom" offset="7" />
+					<right parent="savedc_label" anchor="left" offset="-10" />
 				</anchored>
 				<parameters>
 					<defaultlabelres>power_label_savetypenone</defaultlabelres>
@@ -156,18 +202,6 @@
 					<values>fortitude|reflex|will</values>
 				</parameters>
 			</button_stringcycler>
-			<label name="savedclabel">
-				<anchored to="savetype" position="righthigh" offset="10,0" width="15" />
-				<static textres="dc" />
-			</label>
-			<basicnumber name="savedc">
-				<anchored height="20">
-					<top parent="savedclabel" anchor="top" relation="relative" offset="0" />
-					<left parent="savedclabel" anchor="right" offset="10" />
-					<right offset="-5" />
-				</anchored>
-				<hideonvalue value="0" />
-			</basicnumber>
 			<label_column name="onset_label">
 				<static textres="record_madness_onset_label" />
 			</label_column>
@@ -177,19 +211,18 @@
 				<static textres="record_madness_effect_label"/>
 				<center />
 			</header_column>
-			<string_columnh_full name="effect" />
-			<label_column name="dormancy_label">
-				<static textres="record_madness_dormancy_label" />
-			</label_column>
-			<string_columnh name="dormancy" />
+			<ft_columnh name="effect" />
+			<header_column name="dormancy_label">
+				<static textres="record_madness_dormancy_label"/>
+				<center />
+			</header_column>
+			<ft_columnh name="dormancy" />
 			
 			<header_column name="description_label">
 				<static textres="record_madness_description_label"/>
 				<center />
 			</header_column>
-			<ft_columnh name="description">
-				<empty textres="empty_madness_description" />
-			</ft_columnh>
+			<ft_columnh name="description" />
 		</sheetdata>
 	</windowclass>
 </root>

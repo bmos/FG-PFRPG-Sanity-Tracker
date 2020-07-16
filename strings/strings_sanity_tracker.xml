@@ -19,7 +19,7 @@
 	<string name="record_madness_stats_label">STATS</string>
 	<string name="record_madness_save_label">Save</string>
 	<string name="record_madness_onset_label">Onset</string>
-	<string name="record_madness_effect_label">Effect</string>
-	<string name="record_madness_dormancy_label">Dormancy</string>
+	<string name="record_madness_effect_label">EFFECTS</string>
+	<string name="record_madness_dormancy_label">DORMANCY</string>
 	<string name="record_madness_description_label">DESCRIPTION</string>
 </root>

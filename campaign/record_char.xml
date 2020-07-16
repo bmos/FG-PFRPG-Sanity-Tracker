@@ -199,7 +199,7 @@
 	<windowclass name="char_sanity_madnesses">
 		<margins control="0,0,0,2" />
 		<sheetdata>
-			<string_textlistitem name="severity">
+			<string_textlistitem name="severity_type">
 				<bounds>5,2,20,20</bounds>
 				<tabtarget next="name" />
 				<default>[-]</default>
