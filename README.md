@@ -2,7 +2,7 @@
 Inspired by [a request](https://svn.fantasygrounds.com/forums/showthread.php?59500-PFRPG-Live-Hitpoints-from-Constitution-Extension&p=525035&viewfull=1#post525035), here is an extension I have made to help track character sanity using the rules from [Paizo's Horror Adventures rulebook](https://paizo.com/products/btpy9n5a/discuss&page=10?Pathfinder-Roleplaying-Game-Horror-Adventures).
 
 # Compatibility and Instructions
-This extension has been fully tested with FantasyGrounds Classic 3.3.10 and FantasyGrounds Unity 4.0.0 (2020-07-07)
+This extension has been fully tested with FantasyGrounds Classic 3.3.11 and FantasyGrounds Unity 4.0.0 (2020-07-07)
 
 In the upper right of the character sheet (under the chat bubble) there will be a brain button. This will bring up that character's sanity tracker.
 
