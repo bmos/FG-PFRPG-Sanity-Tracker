@@ -3,13 +3,15 @@
 <!-- Please see the LICENSE.md file included with this distribution for attribution and copyright information. -->
 
 <root>
-	<!-- Labels -->
 	<string name="char_sanity_title">Sanity</string>
+	<string name="char_madness_title">Madnesses</string>
+
+	<string name="char_madness_button_tooltip">Sanity Tracker</string>
+
 	<string name="char_label_sanityscore">Score</string>
 	<string name="char_label_sanitythreshold">Threshold</string>
 	<string name="char_label_sanityedge">Edge</string>
 	<string name="char_label_sanitydamage">Damage</string>
-	<string name="char_madness_title">Madnesses</string>
 
 	<string name="record_madness_severity_label">SEVERITY</string>
 	<string name="record_madness_severity_type_label">Type</string>

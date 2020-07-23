@@ -12,6 +12,7 @@
 			<buttoncontrol name="button_sanity">
 				<bounds>-41,42,23,22</bounds>
 				<icon normal="button_sanity" pressed="button_sanity_down" />
+				<tooltip textres="char_madness_button_tooltip" />
 				<script>
 					function onInit()
 						SanityTracker.updateSanityScore(window.getDatabaseNode())
