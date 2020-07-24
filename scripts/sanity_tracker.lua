@@ -13,11 +13,11 @@ function onInit()
 	end
 end
 
----	Return a consistent value for nodeChar and rActor.
+---	This function returns a consistent value for nodeChar and rActor.
 --	This is accomplished by parsing node for a number of expected relationships.
---	@param node The databasenode to be queried for relationships.
---	@return nodeChar This is the charsheet databasenode of the player character
---	@return rActor This is a table containing database paths and identifying data about the player character
+--	@param node This is the databasenode that is to be queried for relationships.
+--	@return nodeChar This is the databasenode of the player character within charsheet.
+--	@return rActor This is a table containing database paths and identifying data about the player character.
 local function handleArgs(node)
 	local nodeChar
 	local rActor
@@ -42,9 +42,9 @@ local function handleArgs(node)
 	return nodeChar, rActor
 end
 
----	Calculate the sums of all values in a table
---	@param t A table containing numbers
---	@return nSum The sum of all values in table t
+---	This function calculates the sums of all values in a table.
+--	@param t This is a table (which should contain only numbers).
+--	@return nSum This is the numerical sum of all values in table t.
 function tableSum(t)
 	local nSum = 0
 
@@ -55,7 +55,7 @@ function tableSum(t)
 	return nSum
 end
 
----	Calculate total sanity score and write that value to the character's database node
+---	This function calculates sanity score, edge, and threshold.
 --	@param node the initiating databasenode
 function updateSanityScore(node)
 	local nodeChar, rActor = handleArgs(node)
