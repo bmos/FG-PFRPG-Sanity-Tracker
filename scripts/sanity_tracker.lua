@@ -89,3 +89,32 @@ function updateSanityScore(node)
 	DB.setValue(nodeChar, 'sanity.edge', 'number', nSanityEdge)
 	DB.setValue(nodeChar, 'sanity.threshold', 'number', nSanityThreshold - nSanityThreshold % 1)
 end
+
+--- Allow dragging and dropping madnesses between players
+--	@return nodeChar This is the databasenode of the player character within charsheet.
+--	@return sClass 
+--	@return sRecord 
+--	@return nodeTargetList 
+function addMadness(nodeChar, sClass, sRecord, nodeTargetList)
+	if not nodeChar then
+		return false;
+	end
+	
+	if sClass == 'referencemadness' then
+		local nodeSource = CharManager.resolveRefNode(sRecord)
+		if not nodeSource then
+			return
+		end
+		
+		if not nodeTargetList then
+			return
+		end
+		
+		local nodeEntry = nodeTargetList.createChild()
+		DB.copyNode(nodeSource, nodeEntry)
+	else
+		return false
+	end
+	
+	return true
+end

@@ -48,6 +48,21 @@
 	</windowclass>
 	<!-- Sanity -->
 	<windowclass name="charsheet_sanity">
+		<script>
+			function onDrop(x, y, draginfo)
+				return handleDrop(draginfo, nil);
+			end
+			
+			function handleDrop(draginfo, nodeTargetList)
+				if draginfo.isType("shortcut") then
+					local sClass, sRecord = draginfo.getShortcutData()
+					if StringManager.contains({"referencemadness"}, sClass) then
+						SanityTracker.addMadness(getDatabaseNode(), sClass, sRecord, nodeTargetList)
+						return true
+					end
+				end
+			end
+		</script>
 		<frame>charsheethelper</frame>
 		<placement>
 			<size width="300" height="135" />
