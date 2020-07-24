@@ -8,8 +8,12 @@ In the upper right of the character sheet (under the chat bubble) there will be 
 
 # Features
 * Calculate sanity score, edge, and threshold
-* Track madnesses incurred
 * Track sanity damage (turns red if it's equal to or higher than sanity edge)
+* Track madnesses incurred
+* Roll saving throws and announce success/failure
 
 # Video Demonstration
 [![v1.1.0 demo](https://i.imgur.com/DPuIAkt.jpg)](https://www.youtube.com/watch?v=uuY4c72XhwI "Sanity Tracker - v1.1.0 - Click to Watch!")
+
+# Example Image
+<img src="https://i.imgur.com/sp5FxWc.jpg" alt="sanity tracker example image"/>
