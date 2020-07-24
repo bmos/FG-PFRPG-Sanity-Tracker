@@ -106,6 +106,7 @@
 					savetype.setVisible(false)
 					savedc_label.setVisible(false)
 					savedc.setVisible(false)
+					saveroll.setVisible(true)
 					
 					severity_type.update(bReadOnly, true)
 					subtype.update(bReadOnly, true)
@@ -119,6 +120,7 @@
 					savetype.setVisible(true)
 					savedc_label.setVisible(true)
 					savedc.setVisible(true)
+					saveroll.setVisible(false)
 				
 					severity_type.update(bReadOnly)
 					subtype.update(bReadOnly)
@@ -171,6 +173,7 @@
 				<static textres="record_madness_stats_label"/>
 				<center />
 			</header_column>
+			
 			<label_column name="save_label">
 				<static textres="record_madness_save_label" />
 			</label_column>
@@ -207,6 +210,18 @@
 					<values>fortitude|reflex|will</values>
 				</parameters>
 			</button_stringcycler>
+
+			<button_roll name="saveroll">
+				<anchored to="save_string" position="left" offset="5" />
+				<script>
+					function onClickRelease(target, button, image)
+						local rActor = ActorManager.getActor('pc', window.getDatabaseNode().getChild('...'))
+						local sSave = string.lower(window.savetype.getValue())
+						local nDC = window.savedc.getValue()
+						SanityTracker.rollSave(rActor, sSave, nDC)
+					end
+				</script>
+			</button_roll>
 			
 			<label_column name="onset_label">
 				<static textres="record_madness_onset_label" />
