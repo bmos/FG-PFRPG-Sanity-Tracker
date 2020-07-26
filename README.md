@@ -12,8 +12,5 @@ In the upper right of the character sheet (under the chat bubble) there will be 
 * Track madnesses incurred
 * Roll saving throws and announce success/failure
 
-# Video Demonstration
-[![v1.1.0 demo](https://i.imgur.com/DPuIAkt.jpg)](https://www.youtube.com/watch?v=uuY4c72XhwI "Sanity Tracker - v1.1.0 - Click to Watch!")
-
-# Example Image
-<img src="https://i.imgur.com/sp5FxWc.jpg" alt="sanity tracker example image"/>
+# Video Demonstration (click for video)
+[<img src="https://i.ytimg.com/vi_webp/uuY4c72XhwI/sddefault.webp">](https://youtu.be/uuY4c72XhwI)
