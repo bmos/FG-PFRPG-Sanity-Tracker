@@ -13,4 +13,4 @@ In the upper right of the character sheet (under the chat bubble) there will be 
 * Roll saving throws and announce success/failure
 
 # Video Demonstration (click for video)
-[<img src="https://i.ytimg.com/vi_webp/uuY4c72XhwI/sddefault.webp">](https://youtu.be/uuY4c72XhwI)
+[<img src="https://i.ytimg.com/vi_webp/uuY4c72XhwI/maxresdefault.webp">](https://youtu.be/uuY4c72XhwI)
