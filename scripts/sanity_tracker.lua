@@ -135,7 +135,7 @@ function rollSave(rActor, sSave, nDC)
 		nDC = nil
 	end
 	rRoll.nTarget = nDC
+	rRoll.tags = 'madness'
 
 	ActionsManager.performAction(nil, rActor, rRoll)
-
 end
