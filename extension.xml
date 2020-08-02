@@ -3,7 +3,7 @@
 	<!-- Please see the LICENSE.md file included with this distribution for attribution and copyright information. -->
 	<properties>
 		<name>Sanity Tracker</name>
-		<version>1.3.1</version>
+		<version>1.4.0</version>
 		<author>bmos (Wil Thieme)</author>
 		<description>This FantasyGrounds extension helps track sanity effects as described in Paizo's Horror Adventures rulebook.</description>
 		<ruleset>
@@ -14,7 +14,7 @@
 		</ruleset>
 	</properties>
 
-	<announcement text="https://github.com/bmos/PFRPG-Sanity-Tracker\rPFRPG Sanity Tracker v1.3.1:\rThis extension helps calculate and track sanity and madnesses."  icon="SanityLogo" font="emotefont" />
+	<announcement text="https://github.com/bmos/PFRPG-Sanity-Tracker\rPFRPG Sanity Tracker v1.4.0:\rThis extension helps calculate and track sanity and madnesses."  icon="SanityLogo" font="emotefont" />
 
 	<base>
 		<!-- Graphics -->
