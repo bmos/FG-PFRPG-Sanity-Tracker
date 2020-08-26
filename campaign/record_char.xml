@@ -46,6 +46,7 @@
 			<close_charsheet />
 		</sheetdata>
 	</windowclass>
+
 	<!-- Sanity -->
 	<windowclass name="charsheet_sanity">
 		<script>
