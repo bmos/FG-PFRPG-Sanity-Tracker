@@ -489,19 +489,19 @@ function checkConditional(rActor, nodeEffect, aConditions, rTarget, aIgnore)
 	for _,v in ipairs(aConditions) do
 		local sLower = v:lower();
 		if sLower == DataCommon.healthstatusfull then
-			local nPercentWounded = ActorManager2.getPercentWounded("ct", ActorManager.getCTNode(rActor));
+			local nPercentWounded = ActorManager35E.getPercentWounded("ct", ActorManager.getCTNode(rActor));
 			if nPercentWounded > 0 then
 				bReturn = false;
 				break;
 			end
 		elseif sLower == DataCommon.healthstatushalf then
-			local nPercentWounded = ActorManager2.getPercentWounded("ct", ActorManager.getCTNode(rActor));
+			local nPercentWounded = ActorManager35E.getPercentWounded("ct", ActorManager.getCTNode(rActor));
 			if nPercentWounded < .5 then
 				bReturn = false;
 				break;
 			end
 		elseif sLower == DataCommon.healthstatuswounded then
-			local nPercentWounded = ActorManager2.getPercentWounded("ct", ActorManager.getCTNode(rActor));
+			local nPercentWounded = ActorManager35E.getPercentWounded("ct", ActorManager.getCTNode(rActor));
 			if nPercentWounded == 0 then
 				bReturn = false;
 				break;
@@ -522,17 +522,17 @@ function checkConditional(rActor, nodeEffect, aConditions, rTarget, aIgnore)
 			local sTypeCheck = sLower:match("^type%s*%(([^)]+)%)$");
 			local sCustomCheck = sLower:match("^custom%s*%(([^)]+)%)$");
 			if sAlignCheck then
-				if not ActorManager2.isAlignment(rActor, sAlignCheck) then
+				if not ActorManager35E.isAlignment(rActor, sAlignCheck) then
 					bReturn = false;
 					break;
 				end
 			elseif sSizeCheck then
-				if not ActorManager2.isSize(rActor, sSizeCheck) then
+				if not ActorManager35E.isSize(rActor, sSizeCheck) then
 					bReturn = false;
 					break;
 				end
 			elseif sTypeCheck then
-				if not ActorManager2.isCreatureType(rActor, sTypeCheck) then
+				if not ActorManager35E.isCreatureType(rActor, sTypeCheck) then
 					bReturn = false;
 					break;
 				end
