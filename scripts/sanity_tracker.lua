@@ -66,9 +66,9 @@ function updateSanityScore(node)
 	tMentalScores['wis'] = DB.getValue(nodeChar, 'abilities.wisdom.score', 0)
 	tMentalScores['int'] = DB.getValue(nodeChar, 'abilities.intelligence.score', 0)
 
-	tMentalScores['cha_effect'] = EffectManagerST.getEffectsBonus(rActor, 'CHA', true)
-	tMentalScores['wis_effect'] = EffectManagerST.getEffectsBonus(rActor, 'WIS', true)
-	tMentalScores['int_effect'] = EffectManagerST.getEffectsBonus(rActor, 'INT', true)
+	tMentalScores['cha_effect'] = EffectManager35EDS.getEffectsBonus(rActor, 'CHA', true)
+	tMentalScores['wis_effect'] = EffectManager35EDS.getEffectsBonus(rActor, 'WIS', true)
+	tMentalScores['int_effect'] = EffectManager35EDS.getEffectsBonus(rActor, 'INT', true)
 
 	tMentalScores['cha_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.charisma.damage', 0)
 	tMentalScores['wis_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.wisdom.damage', 0)
