@@ -8,8 +8,12 @@
 		<version>1.5</version>
 		<author>bmos (Wil Thieme)</author>
 		<description>This FantasyGrounds extension helps track sanity effects as described in Paizo's Horror Adventures rulebook.</description>
-		<ruleset name="PFRPG" />
-		<ruleset name="3.5E" />
+		<ruleset>
+			<name>3.5E</name>
+		</ruleset>
+		<ruleset>
+			<name>PFRPG</name>
+		</ruleset>
 	</properties>
 
 	<announcement text="https://github.com/bmos/PFRPG-Sanity-Tracker\rPFRPG Sanity Tracker v1.5:\rThis extension helps calculate and track sanity and madnesses."  icon="SanityLogo" font="emotefont" />
