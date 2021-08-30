@@ -118,9 +118,9 @@
 						local nSanityEdge = DB.getValue(nodeSanity, 'edge', 0)
 
 						if nSanityDamage ~= 0 and nSanityDamage >= nSanityEdge then
-							window.sanitydamage.setColor('FFB22929')
+							window.sanitydamage.setColor(ColorManager.COLOR_HEALTH_CRIT_WOUNDS)
 						else
-							window.sanitydamage.setColor('FF000000')
+							window.sanitydamage.setColor(ColorManager.COLOR_FULL)
 						end
 					end
 				</script>
@@ -161,9 +161,9 @@
 						local nSanityEdge = DB.getValue(nodeSanity, 'edge', 0)
 
 						if nSanityDamage >= nSanityEdge then
-							window.sanitydamage.setColor('FFB22929')
+							window.sanitydamage.setColor(ColorManager.COLOR_HEALTH_CRIT_WOUNDS)
 						else
-							window.sanitydamage.setColor('FF000000')
+							window.sanitydamage.setColor(ColorManager.COLOR_FULL)
 						end
 					end
 				</script>
