@@ -125,8 +125,8 @@ function onInit()
 		DB.addHandler(DB.getPath('charsheet.*.abilities.charisma'), 'onChildUpdate', updateSanityScore)
 		DB.addHandler(DB.getPath('charsheet.*.abilities.wisdom'), 'onChildUpdate', updateSanityScore)
 		DB.addHandler(DB.getPath('charsheet.*.abilities.intelligence'), 'onChildUpdate', updateSanityScore)
-		DB.addHandler(DB.getPath('combattracker.list.*.effects.*.label'), 'onUpdate', updateSanityScore)
-		DB.addHandler(DB.getPath('combattracker.list.*.effects.*.isactive'), 'onUpdate', updateSanityScore)
-		DB.addHandler(DB.getPath('combattracker.list.*.effects'), 'onChildDeleted', updateSanityScore)
+		DB.addHandler(DB.getPath(CombatManager.CT_COMBATANT_PATH .. '.effects.*.label'), 'onUpdate', updateSanityScore)
+		DB.addHandler(DB.getPath(CombatManager.CT_COMBATANT_PATH .. '.effects.*.isactive'), 'onUpdate', updateSanityScore)
+		DB.addHandler(DB.getPath(CombatManager.CT_COMBATANT_PATH .. '.effects'), 'onChildDeleted', updateSanityScore)
 	end
 end
