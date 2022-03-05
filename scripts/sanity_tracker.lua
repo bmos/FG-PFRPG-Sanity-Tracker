@@ -13,7 +13,7 @@ local function handleArgs(node)
 		rActor = ActorManager.resolveActor(node)
 	elseif node.getParent().getName() == 'abilities' then
 		rActor = ActorManager.resolveActor(node.getChild('...'))
-	elseif node.getChild('...').getName() == 'effects' and string.find(DB.getValue(node.getParent(), 'label', ''), '%a%a%a:') then
+	elseif node.getChild('...').getName() == 'effects' then
 		rActor = ActorManager.resolveActor(node.getChild('....'))
 	end
 
