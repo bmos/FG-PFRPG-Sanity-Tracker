@@ -9,6 +9,8 @@
 -- Commented out code labeled "Remove one shot effects"
 -- Commented out code labeled "If matched, then remove one-off effects"
 
+-- luacheck: ignore
+
 function getEffectsByType(rActor, sEffectType, aFilter, rFilterActor, bTargetedOnly)
 	if not rActor then
 		return {};
