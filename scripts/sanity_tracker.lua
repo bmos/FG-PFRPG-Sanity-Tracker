@@ -73,31 +73,31 @@ end
 
 --- Allow dragging and dropping madnesses between players
 --	@return nodeChar This is the databasenode of the player character within charsheet.
---	@return sClass 
---	@return sRecord 
---	@return nodeTargetList 
+--	@return sClass
+--	@return sRecord
+--	@return nodeTargetList
 --	luacheck: globals addMadness
 function addMadness(nodeChar, sClass, sRecord, nodeTargetList)
 	if not nodeChar then
 		return false;
 	end
-	
+
 	if sClass == 'referencemadness' then
 		local nodeSource = CharManager.resolveRefNode(sRecord)
 		if not nodeSource then
 			return
 		end
-		
+
 		if not nodeTargetList then
 			return
 		end
-		
+
 		local nodeEntry = nodeTargetList.createChild()
 		DB.copyNode(nodeSource, nodeEntry)
 	else
 		return false
 	end
-	
+
 	return true
 end
 
