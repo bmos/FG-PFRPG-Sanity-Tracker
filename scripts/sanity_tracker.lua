@@ -35,6 +35,7 @@ end
 
 ---	This function calculates sanity score, edge, and threshold.
 --	@param node the initiating databasenode
+--	luacheck: globals updateSanityScore
 function updateSanityScore(node)
 	local rActor = handleArgs(node)
 	if rActor then
@@ -75,6 +76,7 @@ end
 --	@return sClass 
 --	@return sRecord 
 --	@return nodeTargetList 
+--	luacheck: globals addMadness
 function addMadness(nodeChar, sClass, sRecord, nodeTargetList)
 	if not nodeChar then
 		return false;
@@ -100,6 +102,7 @@ function addMadness(nodeChar, sClass, sRecord, nodeTargetList)
 end
 
 ---	This function rolls the save specified in the madness information
+--	luacheck: globals rollSave
 function rollSave(rActor, sSave, nDC)
 	if sSave == 'fort' then
 		sSave = 'fortitude'
