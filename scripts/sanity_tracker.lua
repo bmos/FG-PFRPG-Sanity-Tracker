@@ -23,7 +23,7 @@ end
 ---	This function calculates the sums of all values in a table.
 --	@param t This is a table (which should contain only numbers).
 --	@return nSum This is the numerical sum of all values in table t.
-function tableSum(t)
+local function tableSum(t)
 	local nSum = 0
 
 	for _,v in pairs(t) do
