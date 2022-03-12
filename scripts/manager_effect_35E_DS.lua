@@ -1,15 +1,15 @@
--- 
--- Please see the LICENSE.md file included with this distribution for 
+--
+-- Please see the LICENSE.md file included with this distribution for
 -- attribution and copyright information.
 --
+
+-- luacheck: ignore
 
 -- bmos' list of changes to simplify maintenance:
 -- Removed onInit, parseEffectComp, rebuildParsedEffectComp, applyOngoingDamageAdjustment, checkConditional, and checkConditionalHelper functions
 -- Removed all in EFFECT MANAGER OVERRIDES section
 -- Commented out code labeled "Remove one shot effects"
 -- Commented out code labeled "If matched, then remove one-off effects"
-
--- luacheck: ignore
 
 function getEffectsByType(rActor, sEffectType, aFilter, rFilterActor, bTargetedOnly)
 	if not rActor then
