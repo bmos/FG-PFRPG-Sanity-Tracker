@@ -1,6 +1,6 @@
 [![Build FG-Usable File](https://github.com/bmos/FG-PFRPG-Sanity-Tracker/actions/workflows/create-ext.yml/badge.svg)](https://github.com/bmos/FG-PFRPG-Sanity-Tracker/actions/workflows/create-ext.yml) [![Luacheck](https://github.com/bmos/FG-PFRPG-Sanity-Tracker/actions/workflows/luacheck.yml/badge.svg)](https://github.com/bmos/FG-PFRPG-Sanity-Tracker/actions/workflows/luacheck.yml)
 
-# PFRPG Sanity Tracker
+# Sanity Tracker
 Inspired by [a request](https://svn.fantasygrounds.com/forums/showthread.php?59500-PFRPG-Live-Hitpoints-from-Constitution-Extension&p=525035&viewfull=1#post525035), here is an extension I have made to help track character sanity using the rules from [Paizo's Horror Adventures rulebook](https://paizo.com/products/btpy9n5a/discuss&page=10?Pathfinder-Roleplaying-Game-Horror-Adventures).
 
 # Compatibility and Instructions
