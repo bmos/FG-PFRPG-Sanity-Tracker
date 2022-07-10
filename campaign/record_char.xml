@@ -21,17 +21,6 @@
 					function onButtonPress()
 						Interface.openWindow('charsheet_sanity', window.getDatabaseNode())
 					end
-					
-					function onClickRelease(button, x, y)
-						local bFirstClick = DB.getValue(window.getDatabaseNode(), 'sanity.egglock', 1)
-					
-						if button == 2 and bFirstClick == 1 then
-							Interface.openWindow('charsheet_egg', window.getDatabaseNode())
-							DB.setValue(window.getDatabaseNode(), 'sanity.egglock', 'number', 0)
-						elseif bFirstClick == 0 then
-							DB.setValue(window.getDatabaseNode(), 'sanity.egg', 'string', '')
-						end
-					end
 				</script>
 			</buttoncontrol>
 		
@@ -107,23 +96,7 @@
 					<top offset="0" />
 					<left anchor="center" offset="35" />
 				</anchored>
-				<script>
-					function onInit()
-						onValueChanged()
-					end
-
-					function onValueChanged()
-						local nodeSanity = getDatabaseNode().getParent()
-						local nSanityDamage = DB.getValue(nodeSanity, 'damage', 0)
-						local nSanityEdge = DB.getValue(nodeSanity, 'edge', 0)
-
-						if nSanityDamage ~= 0 and nSanityDamage >= nSanityEdge then
-							window.sanitydamage.setColor(ColorManager.COLOR_HEALTH_CRIT_WOUNDS)
-						else
-							window.sanitydamage.setColor(ColorManager.COLOR_FULL)
-						end
-					end
-				</script>
+				<script file="campaign/scripts/sanityedgedamage.lua" />
 				<readonly />
 				<min>0</min>
 			</basicnumber>
@@ -150,23 +123,7 @@
 					<top offset="0" />
 					<left anchor="center" offset="35" />
 				</anchored>
-				<script>
-					function onInit()
-						onValueChanged()
-					end
-
-					function onValueChanged()
-						local nodeSanity = getDatabaseNode().getParent()
-						local nSanityDamage = DB.getValue(nodeSanity, 'damage', 0)
-						local nSanityEdge = DB.getValue(nodeSanity, 'edge', 0)
-
-						if nSanityDamage >= nSanityEdge then
-							window.sanitydamage.setColor(ColorManager.COLOR_HEALTH_CRIT_WOUNDS)
-						else
-							window.sanitydamage.setColor(ColorManager.COLOR_FULL)
-						end
-					end
-				</script>
+				<script file="campaign/scripts/sanityedgedamage.lua" />
 				<min>0</min>
 				<default>0</default>
 			</basicnumber>
@@ -279,17 +236,6 @@
 					<right />
 				</anchored>
 			</frame_char>
-
-			<stringu name="egg" source="sanity.egg">
-				<anchored to="eggframe">
-					<top offset="20" />
-					<left offset="20" />
-					<right offset="20" />
-				</anchored>
-				<default>Are you feeling alright? I hope so, because there's a lot to come.</default>
-				<readonly />
-				<nodrag />
-			</stringu>
 			
 			<close_charsheethelper />
 			<resize_charsheethelper />
