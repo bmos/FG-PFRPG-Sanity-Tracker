@@ -3,14 +3,19 @@
 <!-- Please see the LICENSE.md file included with this distribution for attribution and copyright information. -->
 
 <root>
-	<windowclass name="charsheet" merge="join">
+	<windowclass name="charsheet_overview" merge="join">
 		<sheetdata>
 			<button_charactivate name="speak">
-				<bounds>-41,25,23,22</bounds>
+				<anchored to="rightanchor" width="23" height="22">
+					<top offset="3" />
+				</anchored>
 			</button_charactivate>
 		
 			<buttoncontrol name="button_sanity">
-				<bounds>-41,42,23,22</bounds>
+				<anchored to="speak" width="23" height="22">
+					<top anchor="bottom" />
+					<right />
+				</anchored>
 				<icon normal="button_sanity" pressed="button_sanity_down" />
 				<tooltip textres="char_madness_button_tooltip" />
 				<script>
@@ -23,16 +28,6 @@
 					end
 				</script>
 			</buttoncontrol>
-		
-			<string_labeled name="name">
-				<anchored to="overviewframe" position="insidetopleft" offset="15,10" height="20">
-					<right offset="-15" />
-				</anchored>
-				<labelres>char_label_name</labelres>
-			</string_labeled>
-		
-			<resize_charsheet />
-			<close_charsheet />
 		</sheetdata>
 	</windowclass>
 
@@ -208,37 +203,6 @@
 				</anchored>
 				<multilinespacing>20</multilinespacing>
 			</string_textlistitem>
-		</sheetdata>
-	</windowclass>
-
-	<windowclass name="charsheet_egg">
-		<frame>charsheethelper</frame>
-		<placement>
-			<size width="425" height="120" />
-		</placement>
-		<sizelimits>
-			<minimum width="425" height="120" />
-			<maximum width="425" height="120" />
-			<dynamic />
-		</sizelimits>
-		<nodelete />
-		<playercontrol />
-		<sheetdata>
-			<windowtitlebar_char name="title">
-				<prefix>char_sanity_title</prefix>
-			</windowtitlebar_char>
-			<anchor_title_charsheethelper name="contentanchor" />
-
-			<frame_char name="eggframe">
-				<anchored to="contentanchor" height="55">
-					<top anchor="bottom" relation="relative" offset="0" />
-					<left />
-					<right />
-				</anchored>
-			</frame_char>
-			
-			<close_charsheethelper />
-			<resize_charsheethelper />
 		</sheetdata>
 	</windowclass>
 </root>
