@@ -25,7 +25,9 @@ end
 local function tableSum(t)
 	local nSum = 0
 
-	for _, v in pairs(t) do nSum = nSum + v end
+	for _, v in pairs(t) do
+		nSum = nSum + v
+	end
 
 	return nSum
 end
@@ -36,7 +38,7 @@ end
 function updateSanityScore(node)
 	local rActor = handleArgs(node)
 	if rActor then
-		local nodeChar = ActorManager.getCreatureNode(rActor);
+		local nodeChar = ActorManager.getCreatureNode(rActor)
 		local tMentalScores = {}
 
 		tMentalScores['cha'] = DB.getValue(nodeChar, 'abilities.charisma.score', 0)
@@ -75,7 +77,7 @@ end
 --	@return nodeTargetList
 --	luacheck: globals addMadness
 function addMadness(nodeChar, sClass, sRecord, nodeTargetList)
-	if not nodeChar then return false; end
+	if not nodeChar then return false end
 
 	if sClass == 'referencemadness' then
 		local nodeSource = CharManager.resolveRefNode(sRecord)

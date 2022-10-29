@@ -2,9 +2,7 @@
 -- Please see the LICENSE.md file included with this distribution for attribution and copyright information.
 --
 -- luacheck: globals onValueChanged
-function onInit()
-	onValueChanged()
-end
+function onInit() onValueChanged() end
 
 function onValueChanged()
 	local nodeSanity = getDatabaseNode().getParent()
