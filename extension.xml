@@ -8,6 +8,7 @@
 		<version>1.7</version>
 		<author>bmos (Wil Thieme)</author>
 		<description>This FantasyGrounds extension helps track sanity effects as described in Paizo's Horror Adventures rulebook.</description>
+		<loadorder>50</loadorder>
 		<ruleset>
 			<name>3.5E</name>
 		</ruleset>
