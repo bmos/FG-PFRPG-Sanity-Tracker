@@ -3,14 +3,20 @@
 <!-- Please see the LICENSE.md file included with this distribution for attribution and copyright information. -->
 
 <root>
-	<windowclass name="charsheet" merge="join">
+	<windowclass name="charsheet_overview" merge="join">
 		<sheetdata>
 			<button_charactivate name="speak">
-				<bounds>-41,25,23,22</bounds>
+				<anchored to="rightanchor" width="23" height="22">
+					<top offset="4" />
+					<right anchor="left" relation="relative" />
+				</anchored>
 			</button_charactivate>
-		
+
 			<buttoncontrol name="button_sanity">
-				<bounds>-41,42,23,22</bounds>
+				<anchored to="speak" width="23" height="22">
+					<top offset="20" />
+					<right />
+				</anchored>
 				<icon normal="button_sanity" pressed="button_sanity_down" />
 				<tooltip textres="char_madness_button_tooltip" />
 				<script>
@@ -23,16 +29,6 @@
 					end
 				</script>
 			</buttoncontrol>
-		
-			<string_labeled name="name">
-				<anchored to="overviewframe" position="insidetopleft" offset="15,10" height="20">
-					<right offset="-15" />
-				</anchored>
-				<labelres>char_label_name</labelres>
-			</string_labeled>
-		
-			<resize_charsheet />
-			<close_charsheet />
 		</sheetdata>
 	</windowclass>
 
