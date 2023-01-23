@@ -5,7 +5,7 @@
 function onInit() onValueChanged() end
 
 function onValueChanged()
-	local nodeSanity = getDatabaseNode().getParent()
+	local nodeSanity = DB.getParent(getDatabaseNode())
 	local nSanityDamage = DB.getValue(nodeSanity, 'damage', 0)
 	local nSanityEdge = DB.getValue(nodeSanity, 'edge', 0)
 

@@ -8,12 +8,12 @@
 local function handleArgs(node)
 	local rActor
 
-	if node.getParent().getName() == 'charsheet' then
+	if DB.getName(DB.getParent(node)) == 'charsheet' then
 		rActor = ActorManager.resolveActor(node)
-	elseif node.getParent().getName() == 'abilities' then
-		rActor = ActorManager.resolveActor(node.getChild('...'))
-	elseif node.getChild('...').getName() == 'effects' then
-		rActor = ActorManager.resolveActor(node.getChild('....'))
+	elseif DB.getName(DB.getParent(node)) == 'abilities' then
+		rActor = ActorManager.resolveActor(DB.getChild(node, '...'))
+	elseif DB.getName(DB.getChild(node, '...')) == 'effects' then
+		rActor = ActorManager.resolveActor(DB.getChild(node, '....'))
 	end
 
 	return rActor
@@ -85,7 +85,7 @@ function addMadness(nodeChar, sClass, sRecord, nodeTargetList)
 
 		if not nodeTargetList then return end
 
-		local nodeEntry = nodeTargetList.createChild()
+		local nodeEntry = DB.createChild(nodeTargetList)
 		DB.copyNode(nodeSource, nodeEntry)
 	else
 		return false
