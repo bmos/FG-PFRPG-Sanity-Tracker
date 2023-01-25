@@ -62,7 +62,7 @@
 		<playercontrol />
 		<sheetdata>
 			<windowtitlebar name="title">
-				<prefix>char_sanity_title</prefix>
+				<resource>char_sanity_title</resource>
 			</windowtitlebar>
 			<anchor_title_charsheethelper name="contentanchor" />
 		
