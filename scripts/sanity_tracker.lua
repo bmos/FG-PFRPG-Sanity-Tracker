@@ -8,11 +8,12 @@
 local function handleArgs(node)
 	local rActor
 
-	if DB.getName(DB.getParent(node)) == 'charsheet' then
+	local sNodeName = DB.getName(node, '..')
+	if sNodeName == 'charsheet' then
 		rActor = ActorManager.resolveActor(node)
-	elseif DB.getName(DB.getParent(node)) == 'abilities' then
+	elseif sNodeName == 'abilities' then
 		rActor = ActorManager.resolveActor(DB.getChild(node, '...'))
-	elseif DB.getName(DB.getChild(node, '...')) == 'effects' then
+	elseif sNodeName == 'effects' then
 		rActor = ActorManager.resolveActor(DB.getChild(node, '....'))
 	end
 
