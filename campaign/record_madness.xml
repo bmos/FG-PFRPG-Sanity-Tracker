@@ -153,7 +153,7 @@
 				<anchored to="save_string" position="left" offset="5" />
 				<script>
 					function onClickRelease(target, button, image)
-						local rActor = ActorManager.resolveActor(window.getDatabaseNode().getChild('...'))
+						local rActor = ActorManager.resolveActor(DB.getChild(window.getDatabaseNode(), '...'))
 						local sSave = string.lower(window.savetype.getValue())
 						local nDC = window.savedc.getValue()
 						SanityTracker.rollSave(rActor, sSave, nDC)
