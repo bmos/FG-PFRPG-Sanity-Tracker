@@ -61,9 +61,9 @@
 		<nodelete />
 		<playercontrol />
 		<sheetdata>
-			<windowtitlebar_char name="title">
-				<prefix>char_sanity_title</prefix>
-			</windowtitlebar_char>
+			<windowtitlebar name="title">
+				<resource>char_sanity_title</resource>
+			</windowtitlebar>
 			<anchor_title_charsheethelper name="contentanchor" />
 		
 			<frame_char name="sanityframe">
