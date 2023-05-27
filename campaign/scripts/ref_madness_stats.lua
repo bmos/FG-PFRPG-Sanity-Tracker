@@ -11,10 +11,10 @@ function update()
 		local sSubtype = ''
 		local sSave = ''
 
-		if subtype.getValue() and subtype.getValue() ~= '' then sSubtype = ' (' .. subtype.getValue() .. ')' end
+		if subtype.getValue() and subtype.getValue() ~= '' then sSubtype = string.format(' (%s)') end
 
 		if savedc.getValue() and savedc.getValue() ~= 0 and savetype.getValue() and savetype.getValue() ~= '' then
-			sSave = 'DC ' .. savedc.getValue() .. ' '
+			sSave = string.format('DC %s ')
 		end
 		if savetype.getValue() and savetype.getValue() ~= '' then
 			sSave = sSave .. savetype.getValue()
