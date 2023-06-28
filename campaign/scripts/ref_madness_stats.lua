@@ -13,9 +13,7 @@ function update()
 
 		if subtype.getValue() and subtype.getValue() ~= '' then sSubtype = string.format(' (%s)') end
 
-		if savedc.getValue() and savedc.getValue() ~= 0 and savetype.getValue() and savetype.getValue() ~= '' then
-			sSave = string.format('DC %s ')
-		end
+		if savedc.getValue() and savedc.getValue() ~= 0 and savetype.getValue() and savetype.getValue() ~= '' then sSave = string.format('DC %s ') end
 		if savetype.getValue() and savetype.getValue() ~= '' then
 			sSave = sSave .. savetype.getValue()
 		else
