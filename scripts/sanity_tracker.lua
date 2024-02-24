@@ -8,13 +8,13 @@
 local function handleArgs(node)
 	local rActor
 
-	local sNodeName = DB.getName(node, '..')
-	if sNodeName == 'charsheet' then
+	local sNodeName = DB.getName(node, "..")
+	if sNodeName == "charsheet" then
 		rActor = ActorManager.resolveActor(node)
-	elseif sNodeName == 'abilities' then
-		rActor = ActorManager.resolveActor(DB.getChild(node, '...'))
-	elseif sNodeName == 'effects' then
-		rActor = ActorManager.resolveActor(DB.getChild(node, '....'))
+	elseif sNodeName == "abilities" then
+		rActor = ActorManager.resolveActor(DB.getChild(node, "..."))
+	elseif sNodeName == "effects" then
+		rActor = ActorManager.resolveActor(DB.getChild(node, "...."))
 	end
 
 	return rActor
@@ -42,32 +42,32 @@ function updateSanityScore(node)
 		local nodeChar = ActorManager.getCreatureNode(rActor)
 		local tMentalScores = {}
 
-		tMentalScores['cha'] = DB.getValue(nodeChar, 'abilities.charisma.score', 0)
-		tMentalScores['wis'] = DB.getValue(nodeChar, 'abilities.wisdom.score', 0)
-		tMentalScores['int'] = DB.getValue(nodeChar, 'abilities.intelligence.score', 0)
+		tMentalScores["cha"] = DB.getValue(nodeChar, "abilities.charisma.score", 0)
+		tMentalScores["wis"] = DB.getValue(nodeChar, "abilities.wisdom.score", 0)
+		tMentalScores["int"] = DB.getValue(nodeChar, "abilities.intelligence.score", 0)
 
-		tMentalScores['cha_effect'] = EffectManager35EDS.getEffectsBonus(rActor, 'CHA', true)
-		tMentalScores['wis_effect'] = EffectManager35EDS.getEffectsBonus(rActor, 'WIS', true)
-		tMentalScores['int_effect'] = EffectManager35EDS.getEffectsBonus(rActor, 'INT', true)
+		tMentalScores["cha_effect"] = EffectManager35EDS.getEffectsBonus(rActor, "CHA", true)
+		tMentalScores["wis_effect"] = EffectManager35EDS.getEffectsBonus(rActor, "WIS", true)
+		tMentalScores["int_effect"] = EffectManager35EDS.getEffectsBonus(rActor, "INT", true)
 
-		tMentalScores['cha_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.charisma.damage', 0)
-		tMentalScores['wis_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.wisdom.damage', 0)
-		tMentalScores['int_dmg'] = -1 * DB.getValue(nodeChar, 'abilities.intelligence.damage', 0)
+		tMentalScores["cha_dmg"] = -1 * DB.getValue(nodeChar, "abilities.charisma.damage", 0)
+		tMentalScores["wis_dmg"] = -1 * DB.getValue(nodeChar, "abilities.wisdom.damage", 0)
+		tMentalScores["int_dmg"] = -1 * DB.getValue(nodeChar, "abilities.intelligence.damage", 0)
 
 		local nSanityScore = tableSum(tMentalScores)
 		local nSanityEdge = (nSanityScore / 2) - (nSanityScore / 2) % 1
 
 		local tThreshold = {}
-		tThreshold['cha'] = tMentalScores.cha + tMentalScores.cha_effect + tMentalScores.cha_dmg
-		tThreshold['wis'] = tMentalScores.wis + tMentalScores.wis_effect + tMentalScores.wis_dmg
-		tThreshold['int'] = tMentalScores.int + tMentalScores.int_effect + tMentalScores.int_dmg
+		tThreshold["cha"] = tMentalScores.cha + tMentalScores.cha_effect + tMentalScores.cha_dmg
+		tThreshold["wis"] = tMentalScores.wis + tMentalScores.wis_effect + tMentalScores.wis_dmg
+		tThreshold["int"] = tMentalScores.int + tMentalScores.int_effect + tMentalScores.int_dmg
 
 		local nHighestMentalStat = math.max(tThreshold.cha, tThreshold.wis, tThreshold.int)
 		local nSanityThreshold = (nHighestMentalStat - 10) / 2
 
-		DB.setValue(nodeChar, 'sanity.score', 'number', nSanityScore)
-		DB.setValue(nodeChar, 'sanity.edge', 'number', nSanityEdge)
-		DB.setValue(nodeChar, 'sanity.threshold', 'number', nSanityThreshold - nSanityThreshold % 1)
+		DB.setValue(nodeChar, "sanity.score", "number", nSanityScore)
+		DB.setValue(nodeChar, "sanity.edge", "number", nSanityEdge)
+		DB.setValue(nodeChar, "sanity.threshold", "number", nSanityThreshold - nSanityThreshold % 1)
 	end
 end
 
@@ -78,13 +78,19 @@ end
 --	@return nodeTargetList
 --	luacheck: globals addMadness
 function addMadness(nodeChar, sClass, sRecord, nodeTargetList)
-	if not nodeChar then return false end
+	if not nodeChar then
+		return false
+	end
 
-	if sClass == 'referencemadness' then
+	if sClass == "referencemadness" then
 		local nodeSource = CharManager.resolveRefNode(sRecord)
-		if not nodeSource then return end
+		if not nodeSource then
+			return
+		end
 
-		if not nodeTargetList then return end
+		if not nodeTargetList then
+			return
+		end
 
 		local nodeEntry = DB.createChild(nodeTargetList)
 		DB.copyNode(nodeSource, nodeEntry)
@@ -98,30 +104,36 @@ end
 ---	This function rolls the save specified in the madness information
 --	luacheck: globals rollSave
 function rollSave(rActor, sSave, nDC)
-	if sSave == 'fort' then
-		sSave = 'fortitude'
-	elseif sSave == 'ref' then
-		sSave = 'reflex'
-	elseif sSave == 'none' then
+	if sSave == "fort" then
+		sSave = "fortitude"
+	elseif sSave == "ref" then
+		sSave = "reflex"
+	elseif sSave == "none" then
 		sSave = nil
 	end
 
 	local rRoll = ActionSave.getRoll(rActor, sSave)
 
-	if nDC == 0 then nDC = nil end
+	if nDC == 0 then
+		nDC = nil
+	end
 	rRoll.nTarget = nDC
-	rRoll.tags = 'sanitytracker'
+	rRoll.tags = "sanitytracker"
 
 	ActionsManager.performAction(nil, rActor, rRoll)
 end
 
 function onInit()
 	if Session.IsHost then
-		DB.addHandler(DB.getPath('charsheet.*.abilities.charisma'), 'onChildUpdate', updateSanityScore)
-		DB.addHandler(DB.getPath('charsheet.*.abilities.wisdom'), 'onChildUpdate', updateSanityScore)
-		DB.addHandler(DB.getPath('charsheet.*.abilities.intelligence'), 'onChildUpdate', updateSanityScore)
-		DB.addHandler(DB.getPath(CombatManager.CT_COMBATANT_PATH .. '.effects.*.label'), 'onUpdate', updateSanityScore)
-		DB.addHandler(DB.getPath(CombatManager.CT_COMBATANT_PATH .. '.effects.*.isactive'), 'onUpdate', updateSanityScore)
-		DB.addHandler(DB.getPath(CombatManager.CT_COMBATANT_PATH .. '.effects'), 'onChildDeleted', updateSanityScore)
+		DB.addHandler(DB.getPath("charsheet.*.abilities.charisma"), "onChildUpdate", updateSanityScore)
+		DB.addHandler(DB.getPath("charsheet.*.abilities.wisdom"), "onChildUpdate", updateSanityScore)
+		DB.addHandler(DB.getPath("charsheet.*.abilities.intelligence"), "onChildUpdate", updateSanityScore)
+		DB.addHandler(DB.getPath(CombatManager.CT_COMBATANT_PATH .. ".effects.*.label"), "onUpdate", updateSanityScore)
+		DB.addHandler(
+			DB.getPath(CombatManager.CT_COMBATANT_PATH .. ".effects.*.isactive"),
+			"onUpdate",
+			updateSanityScore
+		)
+		DB.addHandler(DB.getPath(CombatManager.CT_COMBATANT_PATH .. ".effects"), "onChildDeleted", updateSanityScore)
 	end
 end

@@ -2,25 +2,31 @@
 -- Please see the LICENSE.md file included with this distribution for attribution and copyright information.
 --
 -- luacheck: globals update save_string subtype
-function onInit() update() end
+function onInit()
+	update()
+end
 
 function update()
 	local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode())
 
 	if bReadOnly then
-		local sSubtype = ''
-		local sSave = ''
+		local sSubtype = ""
+		local sSave = ""
 
-		if subtype.getValue() and subtype.getValue() ~= '' then sSubtype = string.format(' (%s)') end
-
-		if savedc.getValue() and savedc.getValue() ~= 0 and savetype.getValue() and savetype.getValue() ~= '' then sSave = string.format('DC %s ') end
-		if savetype.getValue() and savetype.getValue() ~= '' then
-			sSave = sSave .. savetype.getValue()
-		else
-			sSave = 'none'
+		if subtype.getValue() and subtype.getValue() ~= "" then
+			sSubtype = string.format(" (%s)")
 		end
 
-		severity_biglabel.setValue('[' .. severity_type.getValue() .. sSubtype .. ']')
+		if savedc.getValue() and savedc.getValue() ~= 0 and savetype.getValue() and savetype.getValue() ~= "" then
+			sSave = string.format("DC %s ")
+		end
+		if savetype.getValue() and savetype.getValue() ~= "" then
+			sSave = sSave .. savetype.getValue()
+		else
+			sSave = "none"
+		end
+
+		severity_biglabel.setValue("[" .. severity_type.getValue() .. sSubtype .. "]")
 		severity_biglabel.setVisible(true)
 		severity_label.setVisible(false)
 		severity_type_label.setVisible(false)
