@@ -2,11 +2,11 @@
 -- Please see the LICENSE.md file included with this distribution for attribution and copyright information.
 --
 -- luacheck: globals update save_string subtype
-function onInit()
-	update()
-end
 
 function update()
+	if super and super.update then
+		super.update()
+	end
 	local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode())
 
 	if bReadOnly then
@@ -61,4 +61,11 @@ function update()
 	effect.update(bReadOnly)
 	dormancy.update(bReadOnly)
 	description.update(bReadOnly)
+end
+
+function onInit()
+	if super and super.onInit then
+		super.onInit()
+	end
+	update()
 end

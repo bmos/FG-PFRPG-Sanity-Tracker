@@ -3,73 +3,24 @@
 <!-- Please see the LICENSE.md file included with this distribution for attribution and copyright information. -->
 
 <root>
-	<windowclass name="referencemadness">
-		<frame>recordsheet</frame>
+	<windowclass name="referencemadness" copy="record_window">
 		<placement>
-			<size width="400" height="600" />
+			<size width="500" height="475" />
 		</placement>
 		<sizelimits>
-			<minimum width="400" height="400" />
+			<minimum width="475" height="450" />
 			<dynamic />
 		</sizelimits>
-		<tooltip field="name" />
-		<nodelete />
-		<playercontrol />
-		<sharable />
 		<script>
-			function onLockChanged()
-				if header.subwindow then
-					header.subwindow.update()
-				end
-				if content.subwindow then
-					content.subwindow.update()
-				end
+			function onDrop(x, y, draginfo)
+				UtilityManagerADND.onDropStory(x, y, draginfo,getDatabaseNode());
 			end
 		</script>
-		<sheetdata>
-			<sub_record_header name="header">
-				<class>ref_madness_header</class>
-			</sub_record_header>
-
-			<frame_record_content />
-			<subwindow_record name="content">
-				<class>ref_madness_stats</class>
-				<activate />
-			</subwindow_record>
-			<scrollbar_content />
-			
-			<resize_recordsheet />
-			<close_recordsheet />
-		</sheetdata>
 	</windowclass>
 
-	<windowclass name="ref_madness_header">
-		<margins control="0,0,0,7" />
-		<script>
-			function onInit()
-				update()
-			end
-			function update()
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode())
-				name.setReadOnly(bReadOnly)
-			end
-		</script>
-		<sheetdata>
-			<link_record_header>
-				<class>referencemadness</class>
-			</link_record_header>
+	<windowclass name="referencemadness_header" copy="record_header" />
 
-			<anchor_record_header_right />
-			<icon_record_locked />
-			<button_record_locked />
-
-			<string_record_name name="name">
-				<empty textres="library_recordtype_empty_madness" />
-			</string_record_name>
-		</sheetdata>
-	</windowclass>
-	
-	<windowclass name="ref_madness_stats">
+	<windowclass name="referencemadness_main">
 		<script file="campaign/scripts/ref_madness_stats.lua" />
 		<sheetdata>
 			<anchor_column name="columnanchor" />
