@@ -17,7 +17,7 @@
 		</ruleset>
 	</properties>
 
-	<announcement text="https://github.com/bmos/PFRPG-Sanity-Tracker\rPFRPG Sanity Tracker v1.12:\rThis extension helps calculate and track sanity and madnesses."  icon="SanityLogo" font="emotefont" />
+	<announcement text="https://github.com/bmos/PFRPG-Sanity-Tracker\rPFRPG Sanity Tracker v1.12-hotfix.1:\rThis extension helps calculate and track sanity and madnesses."  icon="SanityLogo" font="emotefont" />
 
 	<base>
 		<!-- Graphics -->

@@ -83,7 +83,7 @@ function addMadness(nodeChar, sClass, sRecord, nodeTargetList)
 	end
 
 	if sClass == "referencemadness" then
-		local nodeSource = CharManager.resolveRefNode(sRecord)
+		local nodeSource = DB.findNode(sRecord)
 		if not nodeSource then
 			return
 		end
