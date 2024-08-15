@@ -12,8 +12,8 @@ function onValueChanged()
 	local nSanityEdge = DB.getValue(nodeSanity, "edge", 0)
 
 	if nSanityDamage ~= 0 and nSanityDamage >= nSanityEdge then
-		window.sanitydamage.setColor(ColorManager.COLOR_HEALTH_CRIT_WOUNDS)
+		window.sanitydamage.setColor(ColorManager.getUIColor("health_wounds_critical"))
 	else
-		window.sanitydamage.setColor(ColorManager.COLOR_FULL)
+		window.sanitydamage.setColor(ColorManager.getUIColor("usage_full"))
 	end
 end
